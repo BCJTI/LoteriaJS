@@ -1,0 +1,13 @@
+{
+  "name": "LoteriaJS",
+  "version": "0.0.0",
+  "description": "LoteriaJS",
+  "main": "app.js",
+  "author": {
+    "name": "Richard",
+    "email": "bigous@gmail.com"
+  },
+  "dependencies": {
+    "mathjs": "^2.1.1"
+  }
+}
