@@ -3,13 +3,16 @@
   "version": "0.0.0",
   "description": "LoteriaJS",
   "main": "app.js",
-  "repository": { "url": "https://github.com/BCJTI/LoteriaJS.git" },
+  "repository": {
+    "url": "https://github.com/BCJTI/LoteriaJS.git"
+  },
   "license": "MIT",
   "author": {
     "name": "Richard",
     "email": "bigous@github.com"
   },
   "dependencies": {
+    "command-line-args": "^1.0.0",
     "mathjs": "^2.1.1"
   }
 }

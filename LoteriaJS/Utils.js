@@ -53,8 +53,8 @@ var utils = {
         console.log('  Combinações de %s em %s: %s', loteria.choose, loteria.from, mathjs.combinations(loteria.from, loteria.choose));
         console.log('  Fechamento: %s', loteria.ensure);
         //console.log('  Probabilidade de acerto: %s');
-        console.log('  Número de jogos: %s', numberOfGames);
-        console.log('  Probabilidade de ganhar (acertar os 15 números): 1 / %s', probability);
+        console.log('  Número de combinações com um volante de %s para acertar %s: %s', loteria.choose, loteria.ensure, numberOfGames);
+        console.log('  Probabilidade de acertar %s: 1 / %s', loteria.ensure, probability);
     }
 
 };

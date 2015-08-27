@@ -2,19 +2,21 @@
 
 var utils = require('./Utils.js');
 
-function LotoFacil(ensure) {
+function MegaSena(ensure) {
+    if (!(this instanceof MegaSena)) return new LotoFacil(ensure);
     this.name = 'Mega Sena';
     this.from = 60;
     this.choose = 6;
     this.ensure = ensure || 1;
+    utils.validate(this);
 };
 
-LotoFacil.prototype.rodar = function () {
+MegaSena.prototype.rodar = function () {
     return utils.rodar(this);
 };
 
-LotoFacil.prototype.info = function () {
+MegaSena.prototype.info = function () {
     return utils.info(this);
 };
 
-module.exports = LotoFacil;
+module.exports = MegaSena;
