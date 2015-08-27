@@ -7,7 +7,7 @@
   "license": "MIT",
   "author": {
     "name": "Richard",
-    "email": "bigous@gmail.com"
+    "email": "bigous@github.com"
   },
   "dependencies": {
     "mathjs": "^2.1.1"
