@@ -27,9 +27,13 @@ var utils = {
 		}
 	},
 	
-	rodar: function (loto) {
+	rodar: function (loto, progressCB) {
 		var jogos = [];
+		var combinacao = 0;
+		var pcb = progressCB || function () { };
 		combinatoria(loto.from, loto.choose, function (jogo) {
+			combinacao++;
+			pcb(combinacao, loto.combinations, jogos);
 			for (var index = 0; index < jogos.length; index++) {
 				var element = jogos[index];
 				if (utils.repetiu(element, jogo, loto.ensure)) {
@@ -41,20 +45,21 @@ var utils = {
 		return jogos;
 	},
 	
-	info: function (loteria) {
-		// ver https://sites.google.com/site/lotusfacius/calculos-interessantes
-		var combinations = mathjs.combinations(loteria.from, loteria.choose);
+	combinacoesDeFechamento: function (loteria) {
 		var numberOfGames = 1;
 		if (loteria.from - loteria.choose >= loteria.choose - loteria.ensure) {
 			numberOfGames = mathjs.combinations(loteria.choose, loteria.ensure) * mathjs.combinations(loteria.from - loteria.choose, loteria.choose - loteria.ensure);
 		}
-		var probability = combinations / numberOfGames;
+		return numberOfGames;
+	},
+	
+	info: function (loteria) {
+		// ver https://sites.google.com/site/lotusfacius/calculos-interessantes
 		console.log('%s:', loteria.name);
-		console.log('  Combinações de %s em %s: %s', loteria.choose, loteria.from, mathjs.combinations(loteria.from, loteria.choose));
+		console.log('  Combinações de %s em %s: %s', loteria.choose, loteria.from, loteria.combinations);
 		console.log('  Fechamento: %s', loteria.ensure);
-		//console.log('  Probabilidade de acerto: %s');
-		console.log('  Número de combinações com um volante de %s para acertar %s: %s', loteria.choose, loteria.ensure, numberOfGames);
-		console.log('  Probabilidade de acertar %s: 1 / %s', loteria.ensure, probability);
+		console.log('  Número de combinações com um volante de %s para acertar %s: %s', loteria.choose, loteria.ensure, loteria.combinationsOfEnsurement);
+		console.log('  Probabilidade de acertar %s: 1 / %s', loteria.ensure, loteria.probability);
 	}
 
 };

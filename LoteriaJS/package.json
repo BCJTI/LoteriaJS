@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "command-line-args": "^1.0.0",
-    "mathjs": "^2.1.1"
+    "mathjs": "^2.1.1",
+    "progress": "^1.1.8"
   }
 }
