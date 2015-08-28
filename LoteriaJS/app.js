@@ -38,19 +38,25 @@ try {
 		});
 		var pct = -1;
 		var lastN = 0;
-		var resultado = loto.rodar(function (n, total, jogos) {
+		var lastProgressUpdate = Date.now();
+		var dnow;
+		var fprogress = function (n, total, jogos) {
 			var npct = Math.floor(n / total * 100);
-			if (npct > pct) {
+			if (npct > pct || (dnow = Date.now()) > (lastProgressUpdate + 200)) {
 				pbar.tick(n - lastN);
 				pct = npct;
 				lastN = n;
+				lastProgressUpdate = dnow;
 			}
-		});
-		console.error('');
+		};
+		var dStart = Date.now();
+		var resultado = loto.rodar(argv.progresso ? fprogress : undefined);
+		var dEnd = Date.now();
+		if(argv.progresso) console.error('');
 		
 		console.log(resultado);
 		
-		console.log('Foram gerados %s jogos para fechar %s na Lotofácil', resultado.length, argv.fechamento);
+		console.log('Foram gerados %s jogos para fechar %s na %s em %s ms.', resultado.length, argv.fechamento, loto.name, dEnd - dStart);
 	}
 } catch (err) {
 	console.error(err);
