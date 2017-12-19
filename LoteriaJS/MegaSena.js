@@ -4,7 +4,7 @@ var utils = require('./Utils.js');
 var mathjs = require('mathjs');
 
 function MegaSena(ensure) {
-	if (!(this instanceof MegaSena)) return new LotoFacil(ensure);
+	if (!(this instanceof MegaSena)) return new MegaSena(ensure);
 	this.name = 'Mega Sena';
 	this.from = 60;
 	this.choose = 6;
